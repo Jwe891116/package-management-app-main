@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"path": "../../GUI"
+		},
+		{
+			"path": "../../practice"
+		},
+		{
+			"path": "../../signup-app-starter"
+		},
+		{
+			"path": "../../guestbook-app"
+		},
+		{
+			"path": "../../task-management-app"
+		},
+		{
+			"path": "../../express-controllers-starter"
+		},
+		{
+			"path": "../../Object O.P"
+		},
+		{
+			"path": "../../fetchAssignment"
+		},
+		{
+			"path": "../../employee-mnagement-app"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "package-management-app"
+	}
+}

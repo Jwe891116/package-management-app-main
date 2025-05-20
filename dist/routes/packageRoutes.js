@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const packageController_1 = require("../controllers/packageController");
+const router = (0, express_1.Router)();
+router.post('/packages/one-day', packageController_1.packageController.createOneDay);
+router.post('/packages/two-day', packageController_1.packageController.createTwoDay);
+router.get('/packages/:trackingNumber', packageController_1.packageController.getPackage);
+router.put('/packages/status', packageController_1.packageController.updateStatus);
+router.get('/packages', packageController_1.packageController.getPackages);
+router.delete('/packages/:trackingNumber', packageController_1.packageController.deletePackage);
+exports.default = router;

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Package Management System</h1>
+        </header>
+        
+        <nav>
+            <button id="createPackageBtn">Create Package</button>
+            <button id="trackPackageBtn">Track Package</button>
+            <button id="managePackagesBtn">Manage Packages</button>
+        </nav>
+        
+        <main>
+            <!-- Track Package Section -->
+            <section id="trackPackageSection" class="hidden">
+                <h2>Track Package</h2>
+                <div class="search-container">
+                    <input type="text" id="trackingNumberInput" placeholder="Enter tracking number">
+                    <button id="searchPackageBtn">Search</button>
+                </div>
+                
+                <div id="trackingResult" class="result-container hidden">
+                    <h3>Package Details</h3>
+                    <div id="packageInfo"></div>
+                    
+                    <div id="statusUpdateSection" class="hidden">
+                        <h4>Update Status</h4>
+                        <select id="statusSelect">
+                            <option value="Created">Created</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="In Transit">In Transit</option>
+                            <option value="Delivered">Delivered</option>
+                        </select>
+                        <button id="updateStatusBtn">Update Status</button>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button id="printTrackedLabelBtn">Print Label</button>
+                        <button id="deleteTrackedPackageBtn" class="delete-btn">Delete Package</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Manage Packages Section -->
+            <section id="managePackagesSection" class="hidden">
+                <h2>Manage Packages</h2>
+                <div class="filters">
+                    <select id="statusFilter">
+                        <option value="">All Statuses</option>
+                        <option value="Created">Created</option>
+                        <option value="Shipped">Shipped</option>
+                        <option value="In Transit">In Transit</option>
+                        <option value="Delivered">Delivered</option>
+                    </select>
+                    <select id="shippingMethodFilter">
+                        <option value="">All Methods</option>
+                        <option value="One-Day">One-Day</option>
+                        <option value="Two-Day">Two-Day</option>
+                    </select>
+                    <button id="applyFiltersBtn">Apply Filters</button>
+                </div>
+                
+                <div class="pagination-controls">
+                    <button id="prevPageBtn">Previous</button>
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <button id="nextPageBtn">Next</button>
+                </div>
+                
+                <table id="packagesTable">
+                    <thead>
+                        <tr>
+                            <th>Tracking #</th>
+                            <th>Sender</th>
+                            <th>Receiver</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                            <th>Total Cost</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="packagesTableBody">
+                        <tr><td colspan="7" class="no-packages">No packages loaded</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Create Package Section -->
+            <section id="createPackageSection">
+                <h2>Create New Package</h2>
+                <div class="tabs">
+                    <button class="tab-btn active" data-type="one-day">One-Day Delivery</button>
+                    <button class="tab-btn" data-type="two-day">Two-Day Delivery</button>
+                </div>
+                
+                <form id="packageForm">
+                    <div class="form-group">
+                        <label for="senderName">Sender Name</label>
+                        <input type="text" id="senderName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senderAddress">Sender Address</label>
+                        <textarea id="senderAddress" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiverName">Receiver Name</label>
+                        <input type="text" id="receiverName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiverAddress">Receiver Address</label>
+                        <textarea id="receiverAddress" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" min="0.1" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="costPerUnitWeight">Cost per kg ($)</label>
+                        <input type="number" id="costPerUnitWeight" min="0.1" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="flatFee">Flat Fee ($)</label>
+                        <input type="number" id="flatFee" min="0" step="0.1" required>
+                    </div>
+                    <button type="submit">Create Package</button>
+                </form>
+                
+                <div id="packageResult" class="result-container hidden">
+                    <h3>Package Created Successfully!</h3>
+                    <div id="packageDetails"></div>
+                    <button id="printLabelBtn">Print Label</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
