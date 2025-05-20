@@ -73,7 +73,7 @@ exports.packageController = {
                 if (!validStatuses.includes(newStatus)) {
                     return res.status(400).json({ error: 'Invalid status' });
                 }
-                const result = yield db_1.default.query('UPDATE packages SET status = $1, updated_at = NOW() WHERE tracking_number = $2 RETURNING *', [newStatus, trackingNumber]);
+                const result = yield db_1.default.query('UPDATE packages SET status = $1 WHERE tracking_number = $2 RETURNING *', [newStatus, trackingNumber]);
                 if (result.rowCount === 0)
                     return res.status(404).json({ error: 'Package not found' });
                 res.json({ package: result.rows[0] });
